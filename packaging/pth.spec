@@ -7,8 +7,6 @@ Url:            http://www.gnu.org/software/pth/
 Group:          Development/Libraries/C and C++
 Source:         %{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
-Patch0:         %{name}-%{version}.diff
-Patch1:         pth_sched.patch
 BuildRequires:  autoconf
 
 %description
@@ -39,7 +37,6 @@ signal mask and errno variable.
 Summary:        GNU Portable Threads
 Group:          Development/Libraries/C and C++
 Requires:       %{library_name} = %{version}
-# pth-devel was last used in openSUSE 11.1
 Provides:       pth-devel = %{version}
 Obsoletes:      pth-devel < %{version}
 
@@ -53,8 +50,6 @@ signal mask and errno variable.
 
 %prep
 %setup -q
-%patch0
-%patch1 -p1
 
 %build
 autoconf
