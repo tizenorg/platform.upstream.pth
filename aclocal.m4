@@ -410,14 +410,6 @@ case "$CFLAGS" in
           * ) AC_COMPILER_OPTION(pipe, -pipe, -pipe, CFLAGS="$CFLAGS -pipe") ;;
 esac
 fi
-case "$CFLAGS" in
-    *-g* ) CFLAGS=`echo "$CFLAGS" |\
-                   sed -e 's/ -g / /g' -e 's/ -g$//' -e 's/^-g //g' -e 's/^-g$//'` ;;
-esac
-case "$CXXFLAGS" in
-    *-g* ) CXXFLAGS=`echo "$CXXFLAGS" |\
-                     sed -e 's/ -g / /g' -e 's/ -g$//' -e 's/^-g //g' -e 's/^-g$//'` ;;
-esac
 msg="disabled"
 ])dnl
 AC_MSG_CHECKING(for compilation debug mode)
