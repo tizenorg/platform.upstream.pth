@@ -7,6 +7,7 @@ Url:            http://www.gnu.org/software/pth/
 Group:          Development/Libraries/C and C++
 Source:         %{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
+Source1001: 	pth.manifest
 BuildRequires:  autoconf
 
 %description
@@ -50,6 +51,7 @@ signal mask and errno variable.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 autoconf
@@ -80,11 +82,13 @@ rm -f %{buildroot}%{_libdir}/libpth.la
 %postun -n %{library_name} -p /sbin/ldconfig
 
 %files -n libpth
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %doc COPYING
 %{_libdir}/libpth*.so.*
 
 %files -n libpth-devel
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %{_bindir}/pth-config
 %{_includedir}/pth.h
