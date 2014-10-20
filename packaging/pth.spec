@@ -54,6 +54,7 @@ signal mask and errno variable.
 cp %{SOURCE1001} .
 
 %build
+export ac_cv_func_sigstack=no
 autoconf
 %ifarch %{arm}
 CFLAGS="${RPM_OPT_FLAGS/-D_FORTIFY_SOURCE=2/-D_FORTIFY_SOURCE=0}"
