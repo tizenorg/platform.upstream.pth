@@ -54,6 +54,7 @@ signal mask and errno variable.
 cp %{SOURCE1001} .
 
 %build
+export ac_cv_func_sigstack=no
 autoconf
 %ifarch %{arm}
 CFLAGS="${RPM_OPT_FLAGS/-D_FORTIFY_SOURCE=2/-D_FORTIFY_SOURCE=0}"
@@ -61,7 +62,7 @@ CFLAGS="${RPM_OPT_FLAGS/-D_FORTIFY_SOURCE=2/-D_FORTIFY_SOURCE=0}"
 
 %configure --disable-static --with-pic \
 %ifarch %arm
-            --with-mctx-mth=sjlj --with-mctx-dsp=sjlj --with-mctx-stk=ss \
+            --with-mctx-mth=sjlj --with-mctx-dsp=sjlj --with-mctx-stk=sas \
 %endif
             --enable-optimize=yes \
             --enable-pthread=no \
